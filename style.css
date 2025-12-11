@@ -1,36 +1,3 @@
-/* Giữ bố cục PC nhưng thu nhỏ khi vào điện thoại */
-@media (max-width: 768px) {
-    body {
-        transform: scale(0.85);     /* Thu nhỏ toàn trang */
-        transform-origin: top center;
-    }
-
-    header, .about, .gallery {
-        width: 118%;                /* Bù lại việc thu nhỏ */
-    }
-}
-
-@media (max-width: 500px) {
-    body {
-        transform: scale(0.75);     /* Thu nhỏ hơn cho màn hình nhỏ */
-        transform-origin: top center;
-    }
-
-    header, .about, .gallery {
-        width: 130%;
-    }
-}
-
-@media (max-width: 390px) {
-    body {
-        transform: scale(0.68);     /* iPhone SE, Android nhỏ */
-        transform-origin: top center;
-    }
-
-    header, .about, .gallery {
-        width: 145%;
-    }
-}
 
 /* RESET */
 * {
