@@ -1,3 +1,88 @@
+
+/* Responsive cho tablet và điện thoại */
+@media (max-width: 900px) {
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 0 10px 0 0;
+        font-size: 15px;
+    }
+
+    .about {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .about .text {
+        max-width: 100%;
+    }
+
+    .avatar img {
+        width: 240px;
+    }
+}
+
+/* Responsive mạnh hơn cho điện thoại nhỏ */
+@media (max-width: 600px) {
+
+    header {
+        padding: 14px 20px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .text h1 {
+        font-size: 34px;
+    }
+
+    .text p {
+        font-size: 16px;
+    }
+
+    .about {
+        padding: 35px 15px;
+    }
+
+    .buttons .social {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .gallery {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .img-box {
+        width: 45%;
+        height: 150px;
+    }
+}
+
+/* Điện thoại rất nhỏ */
+@media (max-width: 400px) {
+    .img-box {
+        width: 100%;
+        height: 160px;
+    }
+}
 /* RESET */
 * {
     margin: 0;
