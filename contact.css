@@ -130,3 +130,58 @@ nav a.active {
     background: #004182;
     transform: translateY(-2px);
 }
+
+/* Bố cục điện thoại */
+@media (max-width: 768px) {
+
+    /* SECTION */
+    .contact {
+        padding: 40px 15px;
+    }
+
+    /* CONTAINER */
+    .contact-container {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 30px;
+        border-radius: 14px;
+    }
+
+    /* LEFT */
+    .contact-info h1 {
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .contact-info p {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    .info-box {
+        font-size: 15px;
+        justify-content: center;
+    }
+
+    /* SOCIAL */
+    .contact-social {
+        justify-content: center;
+    }
+
+    /* RIGHT */
+    .contact-form h2 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .contact-form button {
+        font-size: 15px;
+        padding: 13px;
+    }
+}
