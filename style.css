@@ -1,4 +1,3 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -63,7 +62,7 @@ nav a:hover {
     opacity: 1;
 }
 
-/* ABOUT SECTION */
+/* phần giới thiệu tổng quan */
 .about {
     display: flex;
     justify-content: space-between;
@@ -153,7 +152,7 @@ nav a:hover {
     transition: 0.3s ease;
 }
 
-/* Hover effect */
+/* hiệu ứng chạm vào ảnh */
 .img-box:hover img {
     filter: brightness(60%);
     transform: scale(1.05);
@@ -162,4 +161,74 @@ nav a:hover {
 .img-box:hover .caption {
     opacity: 1;
     transform: translateY(0);
+}
+/* note dòng p/s */
+.note {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
+}
+
+
+/* Bố cục điện thoại */
+@media (max-width: 768px) {
+
+    /* HEADER */
+    header {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 10px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        margin: 6px 10px;
+        font-size: 15px;
+    }
+
+    /* ABOUT */
+    .about {
+        flex-direction: column;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .about .text {
+        max-width: 100%;
+    }
+
+    .about h1 {
+        font-size: 36px;
+    }
+
+    .text p {
+        font-size: 16px;
+    }
+
+    /* AVATAR */
+    .avatar {
+        margin-top: 20px;
+    }
+
+    .avatar img {
+        width: 220px;
+    }
+
+    /* GALLERY */
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+    }
+
+    .img-box {
+        width: 90%;
+        height: 180px;
+    }
 }
