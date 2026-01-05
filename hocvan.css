@@ -1,0 +1,112 @@
+/* Bố cục cả trang  */
+.education {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.education h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: #222;
+}
+
+/* Bố cục từng khối */
+.edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: #ffffff;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.edu-item:hover {
+    transform: translateY(-6px);
+}
+
+/* Bên trái */
+.edu-left h2 {
+    font-size: 22px;
+    color: #111;
+    margin-bottom: 8px;
+}
+
+.edu-left h3 {
+    font-size: 17px;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+.edu-left p {
+    font-size: 15px;
+    color: #777;
+}
+
+/* Bên phải (năm học) */
+.edu-right span {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0066ff;
+    white-space: nowrap;
+}
+
+/* Responsive cho mobile */
+/* Bố cục điện thoại – đồng bộ style.css */
+@media (max-width: 768px) {
+
+    .education {
+        max-width: 100%;
+        margin: 40px auto;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    .education h1 {
+        font-size: 32px;
+        margin-bottom: 35px;
+    }
+
+    .edu-item {
+        flex-direction: column;
+        align-items: center;
+        padding: 22px 20px;
+        text-align: center;
+    }
+
+    .edu-left h2 {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+
+    .edu-left h3 {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 6px;
+    }
+
+    .edu-left p {
+        font-size: 14px;
+        color: #777;
+    }
+
+    /* Năm học – giống badge */
+    .edu-right {
+        margin-top: 14px;
+        padding: 6px 16px;
+        background: #111;
+        border-radius: 20px;
+    }
+
+    .edu-right span {
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+    }
+}

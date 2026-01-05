@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Học vấn - HuuHieu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS chung -->
     <link rel="stylesheet" href="style.css">
+    <!-- CSS riêng cho trang Học vấn -->
+    <link rel="stylesheet" href="hocvan.css">
 </head>
 <body>
 
 <header>
     <div class="logo">
-        <img src="image/avt-1.jpg" alt ="logo">
+        <img src="image/avt-1.jpg" alt="logo">
     </div>
     <nav>
         <a href="index.html">Trang chủ</a>
-        <a href="hocvan.html">Học vấn</a>
+        <a href="hocvan.html" class="active">Học vấn</a>
         <a href="chungchi.html">Chứng chỉ</a>
         <a href="thethao.html">Thể thao</a>
         <a href="https://collshp.com/huuhieu06">Shop</a>
@@ -21,13 +25,44 @@
     </nav>
 </header>
 
-<section class="about">
-    <div class="text">
-        <h1>Học vấn</h1>
-        <p>🎓 Sinh viên năm 2 – Đại học Bách Khoa Đà Nẵng</p>
-        <p>📘 Ngành: Điện tử - Viễn thông</p>
+<main class="education">
+
+    <h1>Quá Trình Học Tập</h1>
+
+    <!-- Đại học -->
+    <div class="edu-item">
+        <div class="edu-left">
+            <h2>Đại học Bách Khoa – Đại học Đà Nẵng</h2>
+            <h3>Ngành: Điện tử - Viễn thông</h3>
+            <p>GPA tích lũy: 3.2 </p>
+        </div>
+        <div class="edu-right">
+            <span>2024 – nay</span>
+        </div>
     </div>
-</section>
+
+    <!-- THPT -->
+    <div class="edu-item">
+        <div class="edu-left">
+            <h2>Trường THPT Đô Lương IV</h2>
+            <h3>Khối Khoa học Tự nhiên</h3>
+            <p>Tốt nghiệp loại:  Giỏi</p>
+        </div>
+        <div class="edu-right">
+            <span>2021 - 2024 </span>
+        </div>
+    </div>
+    <!-- <div class="edu-item">
+        <div class="edu-left">
+            <h2>Trường THCS Hiến Sơn</h2>
+            <h3>Khối Khoa học Tự nhiên</h3>
+            <p>Tốt nghiệp loại:  Giỏi</p>
+        </div>
+        <div class="edu-right">
+            <span>2016-2020 </span>
+        </div>
+    </div> -->
+</main>
 
 </body>
 </html>
