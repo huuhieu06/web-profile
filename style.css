@@ -21,9 +21,11 @@ header {
     color: #fff;
 }
 
-.logo {
-    font-size: 32px;
-    font-weight: bold;
+.logo img {
+    width: 45px;       
+    height: 45px;
+    border-radius: 50%;  
+    object-fit: cover;    
 }
 
 nav a {
@@ -71,12 +73,17 @@ nav a:hover {
 }
 
 .about .text {
-    max-width: 520px;
+    max-width: 630px;
 }
-
+.about .text a{
+    text-decoration: none;
+}
 .about h1 {
     font-size: 48px;
     margin-bottom: 10px;
+}
+.about .note{
+    font-size: 14px;
 }
 
 .role {
@@ -110,7 +117,6 @@ nav a:hover {
     line-height: 1.6;
     font-family: 'Poppins', sans-serif;
 }
-
 
 .gallery {
     display: flex;

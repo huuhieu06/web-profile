@@ -26,7 +26,9 @@ nav a.active {
 .contact-info {
     flex: 1;
 }
-
+.contact-info a{
+    text-decoration: none;
+}
 .contact-info h1 {
     font-size: 36px;
     margin-bottom: 15px;
