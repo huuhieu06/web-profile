@@ -83,7 +83,7 @@ nav a:hover {
     margin-bottom: 10px;
 }
 .about .note{
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .role {
@@ -106,6 +106,7 @@ nav a:hover {
 .buttons.social-links a:hover {
     text-decoration: none !important;
 }
+
 .text h1 {
     font-size: 50px;
     font-weight: 700;
