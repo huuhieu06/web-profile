@@ -70,6 +70,8 @@
     overflow: hidden;
     cursor: pointer;
 }
+/* 3. FIX LỖI DẤU TIẾNG VIỆT CHO TIÊU ĐỀ IN HOA */
+
 
 .img-box img {
     width: 100%;
