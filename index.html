@@ -1,71 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ - HuuHieu</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Kết nối file CSS bên ngoài -->
+    <link rel="stylesheet" href="style.css">
 
+    <!-- Tailwind CSS cho giao diện -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6', // Màu xanh dương chủ đạo
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body>
-    <header>
-        <div class="logo">
-            <img src="image/avt-1.jpg" alt ="logo">
+<body class="bg-gray-900 text-gray-200 antialiased selection:bg-blue-900 selection:text-blue-100">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <img src="image/avt-lônxon.jpg" alt="logo" class="w-10 h-10 rounded-full object-cover border-2 border-primary">
+                <span class="font-bold text-xl tracking-tight text-white">Huu<span class="text-primary">Hieu</span></span>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex gap-6 font-medium text-gray-400">
+                <a href="index.hmtl" class="text-primary hover:text-primary transition-colors">Trang chủ</a>
+                <a href="hocvan.html" class="hover:text-primary transition-colors">Học vấn</a>
+                <a href="chungchi.html" class="hover:text-primary transition-colors">Chứng chỉ</a>
+                <a href="duan.html" class="hover:text-primary transition-colors">Dự án</a>
+                <a href="https://collshp.com/huuhieu06" target="_blank" class="hover:text-primary transition-colors"><i class="fa-solid fa-cart-shopping mr-1"></i>Shop</a>
+                <a href="lienhe.html" class="hover:text-primary transition-colors">Liên hệ</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-primary text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
-        <nav>
-            <a href="index.html">Trang chủ</a>
-            <a href="hocvan.html">Học vấn</a>
-            <a href="chungchi.html">Chứng chỉ</a>
-            <a href="thethao.html">Thể thao</a>
-            <a href="https://collshp.com/huuhieu06">Shop</a>
-            <a href="lienhe.html">Liên hệ</a>
+
+        <!-- Mobile Nav -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700 flex-col py-2 px-4 shadow-lg absolute w-full">
+            <a href="#" class="block py-3 text-primary font-medium border-b border-gray-700">Trang chủ</a>
+            <a href="#" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Học vấn</a>
+            <a href="#" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Chứng chỉ</a>
+            <a href="#" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Thể thao</a>
+            <a href="https://collshp.com/huuhieu06" target="_blank" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700"><i class="fa-solid fa-cart-shopping mr-2"></i>Shop</a>
+            <a href="#" class="block py-3 text-gray-300 hover:text-primary font-medium">Liên hệ</a>
         </nav>
     </header>
 
-    <section class="about"> <!-- Thông tin -->
-        <div class="text">
-            <h1>TRẦN <span> HỮU HIẾU</span></h1>
-            <p class="role">Sinh viên năm 2 Trường Đại học Bách Khoa - Đại học Đà Nẵng.</p>
-            <p>Mình thích công nghệ, mê vọc máy tính và đặc biệt là cảm giác “biến ý tưởng thành trang web thật”.</p>
-            <p>Trang web này mình tạo ra trong lúc học lập trình web – vừa để luyện tay, vừa để lưu lại vài điều nhỏ nhỏ về cuộc sống của mình.</p>
-            <p>Mình luôn tò mò, thích khám phá và muốn thử làm thêm nhiều dự án sáng tạo hơn trong tương lai.</p>
-            <p>👉 <a href="https://collshp.com/huuhieu06"> Nhấn vào đây</a> để mua hàng ủng hộ H nhé hí hí =))</p>
-            <p class="note"><i>p/s: Bạn hãy truy cập link bằng máy tính để có giao diện dễ nhìn nhất hihihi =))</i></p>
-        </div>
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+        
+        <!-- About Section -->
+        <section class="about-section flex flex-col-reverse md:flex-row items-center justify-between gap-12 mb-20">
+            <!-- Text Content -->
+            <div class="text md:w-3/5 space-y-6">
+                <p class="text-primary font-semibold tracking-wide uppercase text-sm">Xin chào, mình là</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                    TRẦN <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">HỮU HIẾU</span>
+                </h1>
+                
+                <div class="bg-blue-900/20 border-l-4 border-primary p-4 rounded-r-lg inline-block">
+                    <p class="role text-blue-100 font-medium">🎓 Sinh viên năm 2 Trường Đại học Bách Khoa - Đại học Đà Nẵng.</p>
+                </div>
 
-        <div class="avatar">
-            <img src="image/khkt-2023.jpg" alt="avatar">
-        </div>
-    </section>
+                <div class="space-y-4 text-gray-400 leading-relaxed text-lg">
+                    <p>Mình thích công nghệ, mê vọc máy tính và đặc biệt là cảm giác <strong class="text-gray-200">“biến ý tưởng thành trang web thật”</strong>.</p>
+                    <p>Trang web này mình tạo ra trong lúc học lập trình web – vừa để luyện tay, vừa để lưu lại vài điều nhỏ nhỏ về cuộc sống của mình.</p>
+                    <p>Mình luôn tò mò, thích khám phá và muốn thử làm thêm nhiều dự án sáng tạo hơn trong tương lai.</p>
+                </div>
 
-    <section class="gallery"> <!-- Album ảnh -->
-        <div class="img-box">
-            <img src="image/ky-yeu-2024.jpg">
-            <div class="caption">Kỷ yếu 2024</div>
-        </div>
+                <div class="pt-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                    <a href="https://collshp.com/huuhieu06" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-6 py-3 rounded-full font-medium transition-transform transform hover:-translate-y-1 shadow-lg shadow-blue-900/50">
+                        <i class="fa-solid fa-store"></i> Mua hàng ủng hộ H nhé =))
+                    </a>
+                </div>
 
-        <div class="img-box">
-            <img src="image/tet-2025.jpg">
-            <div class="caption">Tết 2025</div>
-        </div>
+                <p class="note mt-6 text-sm text-gray-500 italic">
+                    <i class="fa-solid fa-circle-info mr-1"></i> p/s: Giao diện này giờ đã xem mượt trên cả điện thoại rồi nhé hihihi =))
+                </p>
+            </div>
 
-        <div class="img-box">
-            <img src="image/wedding-trungtrang.jpg">
-            <div class="caption">Wedding A Trung</div>
-        </div>
+            <!-- Avatar -->
+            <div class="avatar md:w-2/5 flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                    <img src="image/avt-lônxon.jpg" alt="Avatar Hữu Hiếu" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-gray-800 shadow-2xl z-10">
+                </div>
+            </div>
+        </section>
 
-        <div class="img-box">
-            <img src="image/wedding-trungthu.jpg">
-            <div class="caption">Wedding C Thu</div>
-        </div>
+        <!-- Divider -->
+        <hr class="border-gray-800 my-16">
 
-        <div class="img-box">
-            <img src="image/deo-hai-van.jpg">
-            <div class="caption">Đèo Hải Vân</div>
+        <!-- Gallery Section -->
+        <section class="gallery-container">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white inline-block relative">
+                    Góc Kỷ Niệm
+                    <span class="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-primary rounded-full"></span>
+                </h2>
+                <p class="text-gray-400 mt-4">Vài khoảnh khắc đáng nhớ của mình</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Box 1 -->
+                <div class="gallery-item shadow-lg shadow-black/40">
+                    <img src="image/ky-yeu-2024.jpg" alt="Kỷ yếu 2024">
+                    <div class="gallery-caption">
+                        <h3 class="font-bold text-lg">Kỷ yếu 2024</h3>
+                        <p class="text-sm opacity-80 text-gray-300">Những ngày tháng cuối cấp</p>
+                    </div>
+                </div>
+
+                <!-- Box 2 -->
+                <div class="gallery-item shadow-lg shadow-black/40">
+                    <img src="image/tet-2025.jpg" alt="Tết 2025">
+                    <div class="gallery-caption">
+                        <h3 class="font-bold text-lg">Tết 2025</h3>
+                        <p class="text-sm opacity-80 text-gray-300">Năm mới bình an</p>
+                    </div>
+                </div>
+
+                <!-- Box 3 -->
+                <div class="gallery-item shadow-lg shadow-black/40">
+                    <img src="image/wedding-trungtrang.jpg" alt="Wedding A Trung">
+                    <div class="gallery-caption">
+                        <h3 class="font-bold text-lg">Wedding A Trung</h3>
+                        <p class="text-sm opacity-80 text-gray-300">Ngày vui của anh</p>
+                    </div>
+                </div>
+
+                <!-- Box 4 -->
+                <div class="gallery-item shadow-lg shadow-black/40">
+                    <img src="image/wedding-trungthu.jpg" alt="Wedding C Thu">
+                    <div class="gallery-caption">
+                        <h3 class="font-bold text-lg">Wedding C Thu</h3>
+                        <p class="text-sm opacity-80 text-gray-300">Chúc chị hạnh phúc</p>
+                    </div>
+                </div>
+
+                <!-- Box 5 -->
+                <div class="gallery-item shadow-lg shadow-black/40 lg:col-span-2">
+                    <img src="image/deo-hai-van.jpg" alt="Đèo Hải Vân">
+                    <div class="gallery-caption">
+                        <h3 class="font-bold text-lg">Đèo Hải Vân</h3>
+                        <p class="text-sm opacity-80 text-gray-300">Chuyến đi thanh xuân rực rỡ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-500 py-8 text-center border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2024 Trần Hữu Hiếu. Sinh viên ĐH Bách Khoa Đà Nẵng.</p>
+            <div class="flex justify-center gap-4 mt-4">
+                <a href="fb.comm/huuhieu.06" class="hover:text-white transition-colors text-xl"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://github.com/huuhieu06" class="hover:text-white transition-colors text-xl"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/h.hieu_06" class="hover:text-white transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
+            </div>
         </div>
-    </section>
+    </footer>
+
+    <!-- Script xử lý menu trên Mobile -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+    </script>
 </body>
-
 </html>

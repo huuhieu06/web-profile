@@ -2,29 +2,158 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Chứng chỉ - HuuHieu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chứng chỉ - HuuHieu</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: '#3b82f6' }
+                }
+            }
+        }
+    </script>
+    <!-- CSS Chung -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
 
-<header>
-    <div class="logo">
-        <img src="image/avt-1.jpg" alt ="logo">
-    </div>
-    <nav>
-        <a href="index.html">Trang chủ</a>
-        <a href="hocvan.html">Học vấn</a>
-        <a href="chungchi.html">Chứng chỉ</a>
-        <a href="thethao.html">Thể thao</a>
-        <a href="https://collshp.com/huuhieu06">Shop</a>
-        <a href="lienhe.html">Liên hệ</a>
-    </nav>
-</header>
+<body class="bg-gray-900 text-gray-200 antialiased">
 
-<section class="about">
-    <div class="text">
-        <h1>Chứng chỉ</h1>
-        <p> Phần này Hiếu chưa update =)) </p>
-    </div>
-</section>
+    <!-- Header (Đồng bộ với các trang khác) -->
+    <header class="bg-gray-900/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="image/avt-lônxon.jpg" alt="logo" class="w-10 h-10 rounded-full object-cover border-2 border-primary">
+                <span class="font-bold text-xl tracking-tight text-white">Huu<span class="text-primary">Hieu</span></span>
+            </div>
+
+            <nav class="hidden md:flex gap-6 font-medium text-gray-400">
+                <a href="index.html" class="hover:text-primary transition-colors">Trang chủ</a>
+                <a href="hocvan.html" class="hover:text-primary transition-colors">Học vấn</a>
+                <a href="chungchi.html" class="text-primary font-bold">Chứng chỉ</a>
+                <a href="duan.html" class="hover:text-primary transition-colors">Dự án</a>
+                <a href="https://collshp.com/huuhieu06" target="_blank" class="hover:text-primary transition-colors"><i class="fa-solid fa-cart-shopping mr-1"></i>Shop</a>
+
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-primary text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700 flex-col py-2 px-4 shadow-lg absolute w-full">
+            <a href="index.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Trang chủ</a>
+            <a href="hocvan.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Học vấn</a>
+            <a href="chungchi.html" class="block py-3 text-primary font-bold border-b border-gray-700">Chứng chỉ</a>
+            <a href="#" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Thể thao</a>
+            <a href="https://collshp.com/huuhieu06" target="_blank" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Shop</a>
+            <a href="#" class="block py-3 text-gray-300 hover:text-primary font-medium">Liên hệ</a>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+        <!-- Tiêu đề trang -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Chứng Chỉ & Thành Tựu</h1>
+            <div class="h-1 w-24 bg-primary mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Grid Chứng chỉ -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Mẫu chứng chỉ 1 -->
+            <div class="bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden hover:border-primary transition-all group">
+                <div class="aspect-video bg-gray-700 relative overflow-hidden">
+                    <!-- CHÈN HÌNH ẢNH CHỨNG CHỈ 1 TẠI ĐÂY -->
+                    <img src="image/chungchi-1.png" alt="Chứng chỉ Web" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-400 text-xs font-bold rounded-full uppercase">Technical</span>
+                        <span class="text-gray-500 text-xs">01/2025</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Chứng chỉ Phần mềm máy tính </h3>
+                    <p class="text-gray-400 text-sm mb-4">Hoàn thành khóa học với những ứng dụng phần mềm máy tính.</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-300">
+                        <i class="fa-solid fa-award text-primary"></i>
+                        <span>Cấp bởi: CodeLearn.io</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mẫu chứng chỉ 2 -->
+            <div class="bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden hover:border-primary transition-all group">
+                <div class="aspect-video bg-gray-700 relative overflow-hidden">
+                    <!-- CHÈN HÌNH ẢNH CHỨNG CHỈ 2 TẠI ĐÂY -->
+                    <img src="image/chung-chi-anh-van.jpg" alt="Chứng chỉ Tiếng Anh" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="px-3 py-1 bg-green-900/30 text-green-400 text-xs font-bold rounded-full uppercase">Language</span>
+                        <span class="text-gray-500 text-xs">12/2024</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Tiếng Anh Giao Tiếp</h3>
+                    <p class="text-gray-400 text-sm mb-4">Chứng nhận hoàn thành khóa học tiếng Anh chuyên ngành kỹ thuật.</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-300">
+                        <i class="fa-solid fa-award text-primary"></i>
+                        <span>Cấp bởi: Trung tâm Ngoại ngữ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Box Thông báo -->
+            <div class="bg-blue-900/10 border-2 border-dashed border-blue-900/50 rounded-2xl flex flex-col items-center justify-center p-8 text-center">
+                <div class="w-16 h-16 bg-blue-900/20 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-ellipsis text-2xl text-primary"></i>
+                </div>
+                <h3 class="text-white font-bold mb-2">Đang cập nhật...</h3>
+                <p class="text-gray-500 text-sm">Hiếu đang vọc thêm mấy cái hay ho khác, sẽ sớm update ở đây nhé =))</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-black text-gray-500 py-8 text-center border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2024 Trần Hữu Hiếu. Sinh viên ĐH Bách Khoa Đà Nẵng.</p>
+            <div class="flex justify-center gap-4 mt-4">
+                <a href="#" class="hover:text-white transition-colors text-xl"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-white transition-colors text-xl"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="hover:text-white transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,142 +1,76 @@
+/* FILE: style.css
+   Chứa các styles tùy chỉnh cho website của Trần Hữu Hiếu
+*/
+
+/* 1. Reset & Cơ bản (Từ file style.css gốc của bạn) */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #ffffff;
-    color: #000000;
-    line-height: 1.6;
-}
+/* Lưu ý: Vì HTML của bạn dùng Tailwind class cho body (bg-gray-900), 
+   nên mình sẽ giữ nguyên logic đó để giao diện không bị trắng.
+*/
 
-/* HEADER */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 50px;
-    background: #111;
-    color: #fff;
-}
-
-.logo img {
-    width: 45px;       
-    height: 45px;
-    border-radius: 50%;  
-    object-fit: cover;    
-}
-
-nav a {
-    margin: 0 12px;
-    color: #ccc;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-nav a:hover {
-    color: #fff;
-}
-
-.social-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-left: 10px;
-}
-
-.social-header i,
-.social-header img {
-    width: 22px;
-    height: 22px;
+/* 2. Hiệu ứng Hover Ảnh (Từ phần <style> trong index.html) */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 0.75rem;
+    position: relative;
     cursor: pointer;
-    opacity: 0.8;
 }
 
-.social-header img.zalo-icon {
-    width: 22px;
-    height: 22px;
+.gallery-item img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
 }
 
-.social-header i:hover,
-.social-header img:hover {
-    opacity: 1;
+.gallery-item:hover img {
+    transform: scale(1.1);
 }
 
-/* phần giới thiệu tổng quan */
-.about {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 60px 120px;
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 1.5rem 1rem 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
 }
 
-.about .text {
-    max-width: 630px;
-}
-.about .text a{
-    text-decoration: none;
-}
-.about h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-}
-.about .note{
-    font-size: 16px;
+.gallery-item:hover .gallery-caption {
+    transform: translateY(0);
 }
 
-.role {
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 20px;
+/* 3. Các styles bổ sung từ file cũ (Đã tối ưu để không xung đột Tailwind) */
+
+.note {
+    font-size: 14px;
+    color: #777;
+    margin-top: 10px;
 }
 
-/* AVATAR */
-.avatar img {
-    width: 330px;
+/* Các lớp cũ hỗ trợ cấu trúc nếu bạn không dùng Tailwind */
+.avatar-img {
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-.buttons.social-links a {
-    text-decoration: none !important;
-}
-
-.buttons.social-links a:hover {
-    text-decoration: none !important;
-}
-
-.text h1 {
-    font-size: 50px;
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.text p {
-    font-size: 18px;
-    line-height: 1.6;
-    font-family: 'Poppins', sans-serif;
-}
-
-.gallery {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 40px 0;
-}
-
-/* Bao ngoài ảnh */
+/* Bố cục Gallery cũ nếu cần thiết */
 .img-box {
     position: relative;
-    width: 250px;
-    height: 160px;
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
 }
 
-/* Ảnh */
 .img-box img {
     width: 100%;
     height: 100%;
@@ -144,98 +78,14 @@ nav a:hover {
     transition: 0.3s ease;
 }
 
-/* Caption (text nổi lên) */
-.img-box .caption {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 12px 0;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.55);
-    color: #fff;
-    font-size: 16px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 0.3s ease;
-}
-
-/* hiệu ứng chạm vào ảnh */
 .img-box:hover img {
     filter: brightness(60%);
     transform: scale(1.05);
 }
 
-.img-box:hover .caption {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* note dòng p/s */
-.note {
-    font-size: 14px;
-    color: #777;
-    margin-top: 10px;
-}
-
-
-/* Bố cục điện thoại */
+/* Media Queries bổ sung cho thiết bị di động */
 @media (max-width: 768px) {
-
-    /* HEADER */
     header {
-        flex-direction: column;
-        padding: 15px 20px;
-        gap: 10px;
-    }
-
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav a {
-        margin: 6px 10px;
-        font-size: 15px;
-    }
-
-    /* ABOUT */
-    .about {
-        flex-direction: column;
-        padding: 30px 20px;
-        text-align: center;
-    }
-
-    .about .text {
-        max-width: 100%;
-    }
-
-    .about h1 {
-        font-size: 36px;
-    }
-
-    .text p {
-        font-size: 16px;
-    }
-
-    /* AVATAR */
-    .avatar {
-        margin-top: 20px;
-    }
-
-    .avatar img {
-        width: 220px;
-    }
-
-    /* GALLERY */
-    .gallery {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 30px 0;
-    }
-
-    .img-box {
-        width: 90%;
-        height: 180px;
+        /* Tailwind đã xử lý phần lớn, đây là các điều chỉnh thêm nếu cần */
     }
 }
