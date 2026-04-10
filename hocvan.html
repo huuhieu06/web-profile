@@ -110,5 +110,21 @@
     <footer class="bg-black text-gray-500 py-8 text-center border-t border-gray-800 mt-20">
         <p>&copy; 2024 Trần Hữu Hiếu. Sinh viên ĐH Bách Khoa Đà Nẵng.</p>
     </footer>
+      <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = btn.querySelector('i');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+    </script>
 </body>
 </html>
