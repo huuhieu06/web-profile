@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ | Trần Hữu Hiếu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0c1524; /* Màu nền tối từ ảnh */
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1rem;
+        }
+        .accent-blue {
+            color: #3b82f6;
+        }
+        .bg-accent-blue {
+            background-color: #3b82f6;
+        }
+        input, textarea {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navigation -->
+    <nav class="p-6 flex justify-between items-center max-w-7xl mx-auto w-full sticky top-0 z-50 bg-[#0c1524]/80 backdrop-blur-md">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+                <i class="fa-solid fa-code accent-blue"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight">Huu<span class="accent-blue">Hieu</span></span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="#" class="nav-link">Trang chủ</a>
+            <a href="#" class="nav-link">Học vấn</a>
+            <a href="#" class="nav-link">Chứng chỉ</a>
+            <a href="#" class="nav-link text-white font-bold">Liên hệ</a>
+            <a href="#" class="nav-link flex items-center gap-1"><i class="fa-solid fa-cart-shopping"></i> Shop</a>
+        </div>
+
+        <div class="md:hidden">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-6 py-12 max-w-5xl">
+        
+        <!-- Header Section -->
+        <div class="mb-12">
+            <h4 class="accent-blue uppercase tracking-widest text-xs font-bold mb-2">Thông tin liên lạc</h4>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Để lại <span class="accent-blue">lời nhắn</span></h1>
+            <p class="text-gray-400 max-w-2xl">
+                Bạn có ý tưởng dự án mới, muốn hợp tác hoặc chỉ đơn giản là muốn nói lời chào? Đừng ngần ngại gửi tin nhắn cho mình nhé!
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Info Sidebar -->
+            <div class="space-y-6">
+                <div class="glass-card p-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-envelope accent-blue"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase">Email</p>
+                            <p class="text-sm font-medium">hieu.tran@example.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-phone text-green-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase">Điện thoại</p>
+                            <p class="text-sm font-medium">+84 123 456 789</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                            <i class="fa-solid fa-location-dot text-purple-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 uppercase">Địa chỉ</p>
+                            <p class="text-sm font-medium">Đà Nẵng, Việt Nam</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card p-6">
+                    <p class="text-sm font-bold mb-4 uppercase tracking-wider text-gray-500">Mạng xã hội</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-black transition-colors">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-400 transition-colors">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="md:col-span-2">
+                <form id="contactForm" class="glass-card p-8 space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-400">Họ và tên</label>
+                            <input type="text" placeholder="Nguyễn Văn A" class="w-full p-3 rounded-lg transition-all" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-400">Địa chỉ Email</label>
+                            <input type="email" placeholder="email@vi-du.com" class="w-full p-3 rounded-lg transition-all" required>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-400">Chủ đề</label>
+                        <input type="text" placeholder="Hợp tác dự án..." class="w-full p-3 rounded-lg transition-all">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-400">Nội dung tin nhắn</label>
+                        <textarea rows="5" placeholder="Viết tin nhắn của bạn tại đây..." class="w-full p-3 rounded-lg transition-all" required></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-accent-blue hover:bg-blue-600 text-white font-bold rounded-lg transition-all flex items-center justify-center gap-2">
+                        Gửi tin nhắn <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+                
+                <div id="successMessage" class="hidden glass-card p-8 text-center space-y-4">
+                    <div class="w-20 h-20 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center mx-auto text-4xl">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold">Gửi thành công!</h3>
+                    <p class="text-gray-400">Cảm ơn bạn đã liên hệ. Hiếu sẽ phản hồi sớm nhất có thể.</p>
+                    <button onclick="resetForm()" class="text-blue-400 underline">Gửi một tin nhắn khác</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="p-8 text-center text-sm text-gray-500 border-t border-white/5 mt-12">
+        <p>&copy; 2024 Trần Hữu Hiếu. Built with ❤️ and Code.</p>
+    </footer>
+
+    <script>
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate form submission
+            contactForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+        });
+
+        function resetForm() {
+            contactForm.reset();
+            contactForm.classList.remove('hidden');
+            successMessage.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

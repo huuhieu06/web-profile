@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lỗi: Không thể thực thi tệp C++</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Ngăn cuộn trang để giữ hiệu ứng toàn màn hình */
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .error-overlay {
+            background: radial-gradient(circle at center, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
+        }
+
+        .glitch-text {
+            text-shadow: 2px 2px #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-gradient text-white min-h-screen flex flex-col items-center justify-center relative">
+
+    <!-- Hiệu ứng nền overlay -->
+    <div class="absolute inset-0 error-overlay pointer-events-none"></div>
+
+    <div class="z-10 text-center px-6 max-w-4xl">
+        <!-- Biểu tượng cảnh báo lớn -->
+        <div class="mb-8 animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mx-auto text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-extrabold uppercase mb-4 glitch-text tracking-tighter">
+            Lỗi Hệ Thống
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-400 mb-12 font-light">
+            Định dạng <span class="text-blue-400 font-mono font-bold">.CPP</span> không được hỗ trợ bởi trình duyệt web.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-8 text-left">
+            <!-- Cột 1: Giải thích -->
+            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 backdrop-blur-sm">
+                <h2 class="text-lg font-semibold text-red-400 mb-3 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                    </svg>
+                    Nguyên nhân
+                </h2>
+                <p class="text-slate-300 text-sm leading-relaxed">
+                    C++ là ngôn ngữ biên dịch, yêu cầu phần cứng và hệ điều hành thực thi trực tiếp. Trình duyệt chỉ xử lý các ngôn ngữ kịch bản như HTML/JS. Bạn không thể chạy mã nguồn C++ thuần túy tại đây.
+                </p>
+            </div>
+
+            <!-- Cột 2: Giải pháp -->
+            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700 backdrop-blur-sm">
+                <h2 class="text-lg font-semibold text-green-400 mb-3 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Cách khắc phục
+                </h2>
+                <ul class="text-slate-300 text-sm space-y-2">
+                    <li>1. Cài đặt IDE (VS Code, Visual Studio)</li>
+                    <li>2. Sử dụng trình biên dịch GCC/G++</li>
+                    <li>3. Inbox Hiếu để lấy mã nguồn C++</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-12 flex flex-col md:flex-row gap-4 justify-center">
+            <!-- Thay đổi button thành thẻ a để nhận href -->
+            <a href="duan.html" class="px-8 py-3 bg-slate-700 hover:bg-slate-600 text-white font-bold rounded-full transition-all transform hover:scale-105 text-center flex items-center justify-center">
+                Quay về trang dự án
+            </a>
+        </div>
+    </div>
+</body>
+</html>
