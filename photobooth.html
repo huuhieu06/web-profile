@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HuuHieu PhotoBooth Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Dancing+Script:wght@700&family=Rowdies:wght@700&display=swap');
+        
+        :root {
+            --bg-dark: #0b1121;
+            --card-glass: rgba(30, 41, 59, 0.7);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: var(--card-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .camera-mirror {
+            transform: scaleX(-1);
+        }
+
+        #countdown-overlay {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            font-size: 12rem;
+            font-weight: 800;
+            z-index: 50;
+            align-items: center;
+            justify-content: center;
+            color: #3b82f6;
+            text-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+            pointer-events: none;
+        }
+
+        .flash-active {
+            animation: flashAnim 0.2s ease-out forwards;
+        }
+        @keyframes flashAnim {
+            0% { background: white; opacity: 1; }
+            100% { background: transparent; opacity: 0; }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px #3b82f6;
+        }
+
+        .layout-card.active {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        #zoom-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0,0,0,0.9);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <div id="zoom-modal" onclick="closeZoom()">
+        <img id="zoomed-image" class="max-w-full max-h-full rounded-xl shadow-2xl object-contain">
+        <button class="absolute top-6 right-6 text-white bg-white/10 p-3 rounded-full hover:bg-white/20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+    </div>
+
+    <header class="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center font-bold text-2xl shadow-lg rotate-3">H</div>
+            <div>
+                <h1 class="text-xl font-bold tracking-tight">Trần <span class="text-blue-500">Hữu Hiếu</span></h1>
+                <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold">Premium Photobooth</p>
+            </div>
+        </div>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+            <a href="index.html" class="bg-slate-800 px-4 py-2 rounded-full text-white transition hover:bg-slate-700">Quay lại trang chủ</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 pb-20">
+        
+        <div class="lg:col-span-3 space-y-6 order-2 lg:order-1">
+            <!-- Layout Section -->
+            <div class="glass-panel p-6 rounded-[2rem] space-y-4">
+                <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">1. Chọn Layout</h3>
+                <div class="grid grid-cols-2 gap-3" id="layout-container">
+                    <button onclick="changeLayout(1, 1, 'basic')" class="layout-card active border-2 border-slate-700 p-3 rounded-2xl text-xs font-bold hover:bg-slate-800 transition">1-CUT</button>
+                    <button onclick="changeLayout(4, 2, 'basic')" class="layout-card border-2 border-slate-700 p-3 rounded-2xl text-xs font-bold hover:bg-slate-800 transition">4-CUT Grid</button>
+                    <button onclick="changeLayout(4, 1, 'basic')" class="layout-card border-2 border-slate-700 p-3 rounded-2xl text-xs font-bold hover:bg-slate-800 transition">4-CUT Strip</button>
+                    <button onclick="changeLayout(6, 2, 'basic')" class="layout-card border-2 border-slate-700 p-3 rounded-2xl text-xs font-bold hover:bg-slate-800 transition">6-CUT</button>
+                </div>
+                
+                <h3 class="text-xs font-bold text-blue-500 uppercase tracking-widest pt-2 border-t border-slate-800">Bộ Sưu Tập Lễ Hội</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="changeLayout(4, 1, 'vn')" class="layout-card border-2 border-red-900 p-3 rounded-2xl text-xs font-bold hover:bg-red-900/20 transition flex flex-col items-center">
+                        <span>🇻🇳 VN Spirit</span>
+                    </button>
+                    <button onclick="changeLayout(4, 1, 'xmas')" class="layout-card border-2 border-green-800 p-3 rounded-2xl text-xs font-bold hover:bg-green-900/20 transition flex flex-col items-center">
+                        <span>🎄 Giáng Sinh</span>
+                    </button>
+                    <button onclick="changeLayout(4, 1, 'mid-autumn')" class="layout-card border-2 border-blue-900 p-3 rounded-2xl text-xs font-bold hover:bg-blue-900/20 transition flex flex-col items-center">
+                        <span>🌕 Trung Thu</span>
+                    </button>
+                    <button onclick="changeLayout(4, 1, 'tet')" class="layout-card border-2 border-red-500 p-3 rounded-2xl text-xs font-bold hover:bg-red-500/20 transition flex flex-col items-center text-red-500">
+                        <span>🧨 Tết Việt</span>
+                    </button>
+                    <button onclick="changeLayout(4, 1, 'summer')" class="layout-card border-2 border-yellow-500 p-3 rounded-2xl text-xs font-bold hover:bg-yellow-500/20 transition flex flex-col items-center text-yellow-500">
+                        <span>🏖️ Summer</span>
+                    </button>
+                    <button onclick="changeLayout(4, 1, 'locket')" class="layout-card border-2 border-slate-500 p-3 rounded-2xl text-xs font-bold hover:bg-slate-700/20 transition flex flex-col items-center">
+                        <span>📱 Locket</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Frame Color Section -->
+            <div class="glass-panel p-6 rounded-[2rem] space-y-4">
+                <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">2. Màu khung phim</h3>
+                <div class="flex flex-wrap gap-3" id="color-picker">
+                    <button onclick="setFrameColor('#000000', this)" class="w-9 h-9 rounded-full border-2 border-blue-500 bg-black"></button>
+                    <button onclick="setFrameColor('#45322E', this)" class="w-9 h-9 rounded-full border-2 border-transparent" style="background-color: #45322E;"></button>
+                    <button onclick="setFrameColor('#FFFFFF', this)" class="w-9 h-9 rounded-full border-2 border-transparent bg-white"></button>
+                    <button onclick="setFrameColor('#FF0000', this)" class="w-9 h-9 rounded-full border-2 border-transparent bg-red-600"></button>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="glass-panel p-6 rounded-[2rem] space-y-4">
+                <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest">3. Bộ lọc</h3>
+                <select onchange="applyFilter(this.value)" class="w-full bg-slate-900 border-none rounded-xl p-3 text-sm focus:ring-2 ring-blue-500 outline-none transition">
+                    <option value="none">Tự nhiên</option>
+                    <option value="grayscale(100%)">Trắng đen</option>
+                    <option value="sepia(0.7) contrast(1.1)">Vintage</option>
+                    <option value="brightness(1.1) saturate(1.3) contrast(1.1)">Sắc nét</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Camera Section -->
+        <div class="lg:col-span-6 space-y-8 order-1 lg:order-2">
+            <div class="relative glass-panel rounded-[3rem] overflow-hidden bg-black aspect-[4/3] shadow-2xl border-4 border-slate-800">
+                <video id="video" autoplay playsinline muted class="camera-mirror w-full h-full object-cover"></video>
+                <div id="countdown-overlay">3</div>
+                <div id="flash-effect" class="absolute inset-0 pointer-events-none z-[60]"></div>
+                
+                <div id="capture-controls" class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-40 hidden">
+                    <div id="progress-bar" class="flex gap-3"></div>
+                    <button id="pause-btn" onclick="togglePause()" class="bg-white/20 backdrop-blur-md border border-white/30 px-4 py-2 rounded-full text-xs font-bold hover:bg-white/40 transition flex items-center gap-2">
+                        <span id="pause-icon">⏸</span> <span id="pause-text">Tạm dừng</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-4">
+                <button id="snap-btn" onclick="handleStartCapture()" class="btn-primary px-16 py-6 rounded-full text-white font-bold text-xl flex items-center gap-3 shadow-xl active:scale-95 transition-all">
+                    <span id="btn-text">BẮT ĐẦU CHỤP</span>
+                </button>
+                <p id="status-text" class="text-slate-500 text-sm font-medium">Chọn Layout Lễ Hội và nhấn bắt đầu ngay!</p>
+            </div>
+        </div>
+
+        <!-- Result Section -->
+        <div class="lg:col-span-3 space-y-6 order-3">
+            <div class="flex justify-between items-center">
+                <h2 class="font-bold text-lg">Kết quả</h2>
+                <button onclick="clearAll()" class="text-xs text-red-400 hover:underline transition">Xóa hết</button>
+            </div>
+            
+            <div id="result-gallery" class="space-y-6 max-h-[75vh] overflow-y-auto pr-2">
+                <div id="active-preview" class="glass-panel p-3 rounded-3xl"></div>
+                <div id="history-gallery" class="space-y-6 pt-4 border-t border-slate-800"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <canvas id="main-canvas" class="hidden"></canvas>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('main-canvas');
+        const ctx = canvas.getContext('2d');
+        const countdownOverlay = document.getElementById('countdown-overlay');
+        const flashEffect = document.getElementById('flash-effect');
+        const btnText = document.getElementById('btn-text');
+        const snapBtn = document.getElementById('snap-btn');
+        const statusText = document.getElementById('status-text');
+        const progressBar = document.getElementById('progress-bar');
+        const captureControls = document.getElementById('capture-controls');
+        const pauseIcon = document.getElementById('pause-icon');
+        const pauseText = document.getElementById('pause-text');
+        const activePreview = document.getElementById('active-preview');
+        const historyGallery = document.getElementById('history-gallery');
+        const zoomModal = document.getElementById('zoom-modal');
+        const zoomedImage = document.getElementById('zoomed-image');
+
+        let currentLayout = { shots: 1, cols: 1, type: 'basic' };
+        let currentFrameColor = '#000000';
+        let currentFilter = 'none';
+        let capturedFrames = [];
+        let isCapturing = false;
+        let isPaused = false;
+
+        async function initCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: "user" }, 
+                    audio: false 
+                });
+                video.srcObject = stream;
+                video.onloadedmetadata = () => {
+                    video.play().catch(e => console.error(e));
+                    renderComposite();
+                };
+            } catch (err) {
+                alert("Không thể truy cập Camera!");
+            }
+        }
+
+        function changeLayout(shots, cols, type = 'basic') {
+            if (isCapturing) return;
+            currentLayout = { shots, cols, type };
+            document.querySelectorAll('.layout-card').forEach(card => card.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            // Auto set theme colors
+            if (type === 'vn') currentFrameColor = '#E60000';
+            else if (type === 'xmas') currentFrameColor = '#134e4a'; // Teal Green
+            else if (type === 'mid-autumn') currentFrameColor = '#1e1b4b'; // Night Blue
+            else if (type === 'tet') currentFrameColor = '#991b1b'; // Red
+            else if (type === 'summer') currentFrameColor = '#0369a1'; // Ocean Blue
+            else if (type === 'locket') currentFrameColor = '#000000';
+            
+            capturedFrames = [];
+            renderComposite();
+        }
+
+        function setFrameColor(color, btn) {
+            currentFrameColor = color;
+            document.querySelectorAll('#color-picker button').forEach(b => b.classList.replace('border-blue-500', 'border-transparent'));
+            btn.classList.replace('border-transparent', 'border-blue-500');
+            renderComposite();
+        }
+
+        function applyFilter(f) {
+            currentFilter = f;
+            video.style.filter = f;
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            if (isPaused) {
+                pauseIcon.innerText = "▶";
+                pauseText.innerText = "Tiếp tục";
+            } else {
+                pauseIcon.innerText = "⏸";
+                pauseText.innerText = "Tạm dừng";
+            }
+        }
+
+        async function waitWhilePaused() {
+            while (isPaused) await new Promise(r => setTimeout(r, 100));
+        }
+
+        async function handleStartCapture() {
+            isCapturing = true;
+            isPaused = false;
+            capturedFrames = [];
+            snapBtn.disabled = true;
+            statusText.innerText = "Chuẩn bị...";
+            progressBar.innerHTML = '';
+            captureControls.classList.remove('hidden');
+            
+            for(let i=0; i<currentLayout.shots; i++) {
+                const dot = document.createElement('div');
+                dot.className = "w-3 h-3 rounded-full bg-white/20 transition-colors duration-300";
+                progressBar.appendChild(dot);
+            }
+
+            for(let i=0; i < currentLayout.shots; i++) {
+                await waitWhilePaused();
+                await startCountdown(3);
+                await waitWhilePaused();
+                await captureSingleFrame();
+                renderComposite();
+                progressBar.children[i].classList.replace('bg-white/20', 'bg-blue-500');
+                if(i < currentLayout.shots - 1) await new Promise(r => setTimeout(r, 1000));
+            }
+
+            isCapturing = false;
+            snapBtn.disabled = false;
+            captureControls.classList.add('hidden');
+            btnText.innerText = "CHỤP LẠI MỚI";
+            renderComposite(true);
+        }
+
+        function startCountdown(seconds) {
+            return new Promise(resolve => {
+                let count = seconds;
+                countdownOverlay.style.display = 'flex';
+                countdownOverlay.innerText = count;
+                const timer = setInterval(() => {
+                    if (isPaused) return;
+                    count--;
+                    if(count > 0) countdownOverlay.innerText = count;
+                    else { clearInterval(timer); countdownOverlay.style.display = 'none'; resolve(); }
+                }, 800);
+            });
+        }
+
+        async function captureSingleFrame() {
+            flashEffect.classList.add('flash-active');
+            setTimeout(() => flashEffect.classList.remove('flash-active'), 200);
+
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = 800;
+            tempCanvas.height = 600;
+            const tCtx = tempCanvas.getContext('2d');
+
+            const vW = video.videoWidth;
+            const vH = video.videoHeight;
+            const targetRatio = 4 / 3;
+            let sX = 0, sY = 0, sW = vW, sH = vH;
+            
+            if (vW / vH > targetRatio) {
+                sW = vH * targetRatio;
+                sX = (vW - sW) / 2;
+            } else {
+                sH = vW / targetRatio;
+                sY = (vH - sH) / 2;
+            }
+
+            tCtx.save();
+            tCtx.translate(tempCanvas.width, 0);
+            tCtx.scale(-1, 1);
+            tCtx.filter = currentFilter;
+            tCtx.drawImage(video, sX, sY, sW, sH, 0, 0, tempCanvas.width, tempCanvas.height);
+            tCtx.restore();
+
+            capturedFrames.push(tempCanvas.toDataURL('image/png'));
+        }
+
+        async function renderComposite(isFinal = false) {
+            const photoRatio = 4/3;
+            let photoWidth = 300; 
+            let padding = 12;
+            let marginX = 40;
+            let headerH = 70;
+            let footerH = 45;
+
+            // Optimizing Strip layout (4 vertical)
+            if (currentLayout.cols === 1 && currentLayout.shots >= 4) {
+                photoWidth = 160; 
+                padding = 8;
+                marginX = 22;
+                headerH = 45;
+                footerH = 35;
+            } else if (currentLayout.cols === 1) {
+                photoWidth = 220;
+                padding = 10;
+                marginX = 35;
+                headerH = 60;
+                footerH = 40;
+            }
+            
+            const photoHeight = photoWidth / photoRatio;
+            const cols = currentLayout.cols;
+            const rows = Math.ceil(currentLayout.shots / cols);
+
+            if (['vn', 'xmas', 'mid-autumn', 'tet', 'summer'].includes(currentLayout.type)) {
+                headerH = 65;
+                footerH = 80;
+            }
+
+            canvas.width = (photoWidth * cols) + (padding * (cols - 1)) + (marginX * 2);
+            canvas.height = (photoHeight * rows) + (padding * (rows - 1)) + headerH + footerH;
+
+            ctx.fillStyle = currentFrameColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Special Themes Drawing
+            switch(currentLayout.type) {
+                case 'vn': drawVNSpirit(canvas.width, canvas.height, marginX, headerH, photoWidth, photoHeight, padding); break;
+                case 'xmas': drawXmasSpirit(canvas.width, canvas.height, marginX, headerH, photoWidth, photoHeight, padding); break;
+                case 'mid-autumn': drawMidAutumnSpirit(canvas.width, canvas.height, marginX, headerH, photoWidth, photoHeight, padding); break;
+                case 'tet': drawTetSpirit(canvas.width, canvas.height, marginX, headerH, photoWidth, photoHeight, padding); break;
+                case 'summer': drawSummerSpirit(canvas.width, canvas.height, marginX, headerH, photoWidth, photoHeight, padding); break;
+                case 'locket': drawLocketSpirit(canvas.width, canvas.height); break;
+                default: 
+                    ctx.fillStyle = (currentFrameColor === '#FFFFFF') ? '#000000' : '#FFFFFF';
+                    ctx.font = `bold ${Math.floor(canvas.width * 0.08)}px 'Dancing Script'`;
+                    ctx.textAlign = "center";
+                    ctx.fillText("HuuHieu Studio", canvas.width / 2, headerH - 15);
+            }
+
+            for(let i = 0; i < currentLayout.shots; i++) {
+                const r = Math.floor(i / cols);
+                const c = i % cols;
+                const x = marginX + c * (photoWidth + padding);
+                const y = headerH + r * (photoHeight + padding);
+
+                if (capturedFrames[i]) {
+                    const img = await loadImage(capturedFrames[i]);
+                    if (currentLayout.type === 'locket') {
+                        drawRoundedImage(ctx, img, x, y, photoWidth, photoHeight, 15);
+                    } else if (['vn', 'xmas', 'mid-autumn', 'tet', 'summer'].includes(currentLayout.type) && i === 0) {
+                        drawArchImage(ctx, img, x, y, photoWidth, photoHeight, 40);
+                    } else {
+                        ctx.drawImage(img, x, y, photoWidth, photoHeight);
+                    }
+                } else {
+                    ctx.fillStyle = 'rgba(255,255,255,0.1)';
+                    ctx.fillRect(x, y, photoWidth, photoHeight);
+                    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+                    ctx.font = `bold ${Math.floor(photoWidth*0.12)}px Inter`;
+                    ctx.textAlign = "center";
+                    ctx.fillText(i + 1, x + photoWidth/2, y + photoHeight/2 + 5);
+                }
+            }
+
+            const dataUrl = canvas.toDataURL('image/png');
+            updatePreviewUI(dataUrl, isFinal);
+        }
+
+        // --- Theme Drawing Functions ---
+
+        function drawXmasSpirit(w, h, mx, head, pw, ph, pad) {
+            // Snowflakes
+            ctx.fillStyle = "white";
+            for(let i=0; i<20; i++) {
+                ctx.beginPath();
+                ctx.arc(Math.random()*w, Math.random()*h, Math.random()*2, 0, Math.PI*2);
+                ctx.fill();
+            }
+            drawStyledText(ctx, "MERRY", w/2, 30, 16, "#ef4444", "#ffffff");
+            drawStyledText(ctx, "CHRISTMAS", w/2, h - 35, 20, "#ef4444", "#ffffff");
+            ctx.font = "24px Inter";
+            ctx.fillText("🎄 🎅 🎁", w/2, h - 10);
+        }
+
+        function drawMidAutumnSpirit(w, h, mx, head, pw, ph, pad) {
+            // Stars
+            ctx.fillStyle = "#fbbf24";
+            for(let i=0; i<30; i++) {
+                ctx.beginPath();
+                ctx.arc(Math.random()*w, Math.random()*h, Math.random()*1.5, 0, Math.PI*2);
+                ctx.fill();
+            }
+            // Moon
+            ctx.beginPath();
+            ctx.arc(w - 30, 30, 15, 0, Math.PI*2);
+            ctx.fill();
+            
+            drawStyledText(ctx, "TRUNG THU", w/2, h - 45, 18, "#fbbf24", "#78350f");
+            ctx.font = "20px Inter";
+            ctx.fillText("🏮 🐇 🎑", w/2, h - 15);
+        }
+
+        function drawTetSpirit(w, h, mx, head, pw, ph, pad) {
+            // Petals
+            ctx.fillStyle = "#facc15";
+            for(let i=0; i<25; i++) {
+                ctx.beginPath();
+                ctx.arc(Math.random()*w, Math.random()*h, 2, 0, Math.PI*2);
+                ctx.fill();
+            }
+            drawStyledText(ctx, "CHÚC MỪNG", w/2, 30, 16, "#facc15", "#7f1d1d");
+            drawStyledText(ctx, "NĂM MỚI", w/2, h - 45, 18, "#facc15", "#7f1d1d");
+            ctx.font = "20px Inter";
+            ctx.fillText("🧧 🧨 🌸", w/2, h - 15);
+        }
+
+        function drawSummerSpirit(w, h, mx, head, pw, ph, pad) {
+            // Sun
+            ctx.fillStyle = "#fbbf24";
+            ctx.beginPath();
+            ctx.arc(30, 30, 15, 0, Math.PI*2);
+            ctx.fill();
+            
+            drawStyledText(ctx, "HELLO", w/2, 30, 16, "#ffffff", "#0284c7");
+            drawStyledText(ctx, "SUMMER", w/2, h - 45, 20, "#ffffff", "#0284c7");
+            ctx.font = "20px Inter";
+            ctx.fillText("🌊 🥥 🍦", w/2, h - 15);
+        }
+
+        function drawVNSpirit(w, h, mx, head, pw, ph, pad) {
+            drawStar(ctx, mx - 5, 25, 5, 10, 5, '#FFD700');
+            drawStyledText(ctx, "TỰ HÀO", w/2, head + ph + (pad/2), 18, "#FFCC00", "#400000");
+            drawStyledText(ctx, "VIỆT NAM", w/2, h - 45, 18, "#FFCC00", "#400000");
+            ctx.font = "20px Inter";
+            ctx.fillText("🏛️ 🛵 🏛️", w/2, h - 15);
+        }
+
+        function drawStyledText(ctx, text, x, y, size, fill, stroke) {
+            ctx.font = `900 ${size}px Rowdies`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.strokeStyle = stroke;
+            ctx.lineWidth = 4;
+            ctx.strokeText(text, x, y);
+            ctx.fillStyle = fill;
+            ctx.fillText(text, x, y);
+        }
+
+        function drawArchImage(ctx, img, x, y, width, height, radius) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.moveTo(x, y + height);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height);
+            ctx.closePath();
+            ctx.clip();
+            ctx.drawImage(img, x, y, width, height);
+            ctx.restore();
+        }
+
+        function drawLocketSpirit(w, h) {
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(w/2, h - 20, 10, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+
+        function drawStar(ctx, cx, cy, spikes, outerRadius, innerRadius, color) {
+            let rot = Math.PI / 2 * 3;
+            let step = Math.PI / spikes;
+            ctx.beginPath(); ctx.moveTo(cx, cy - outerRadius);
+            for (let i = 0; i < spikes; i++) {
+                ctx.lineTo(cx + Math.cos(rot) * outerRadius, cy + Math.sin(rot) * outerRadius); rot += step;
+                ctx.lineTo(cx + Math.cos(rot) * innerRadius, cy + Math.sin(rot) * innerRadius); rot += step;
+            }
+            ctx.closePath(); ctx.fillStyle = color; ctx.fill();
+        }
+
+        function drawRoundedImage(ctx, img, x, y, width, height, radius) {
+            ctx.save(); ctx.beginPath(); ctx.roundRect(x, y, width, height, radius); ctx.clip();
+            ctx.drawImage(img, x, y, width, height); ctx.restore();
+        }
+
+        function loadImage(src) {
+            return new Promise(resolve => {
+                const img = new Image(); img.onload = () => resolve(img); img.src = src;
+            });
+        }
+
+        function updatePreviewUI(dataUrl, isFinal) {
+            activePreview.innerHTML = `
+                <div class="relative group rounded-2xl overflow-hidden shadow-2xl border border-white/10 flex justify-center bg-slate-900/50">
+                    <img src="${dataUrl}" class="max-h-[500px] w-auto object-contain" id="current-img">
+                    <button onclick="openZoom('${dataUrl}')" class="absolute top-2 right-2 bg-black/50 p-1.5 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                </div>
+                ${isFinal ? `
+                <div class="mt-4 grid grid-cols-2 gap-2">
+                    <button onclick="downloadImage('${dataUrl}')" class="bg-blue-600 py-2.5 rounded-xl font-bold text-xs hover:bg-blue-500 transition">Tải về</button>
+                    <button onclick="archiveAndRestart()" class="bg-slate-800 py-2.5 rounded-xl font-bold text-xs hover:bg-slate-700 transition">Chụp lại</button>
+                </div>
+                ` : `<p class="text-[10px] text-center mt-2 text-slate-500 font-bold uppercase tracking-widest">${currentLayout.shots}-CUT PREVIEW</p>`}
+            `;
+        }
+
+        function openZoom(url) { zoomedImage.src = url; zoomModal.style.display = 'flex'; }
+        function closeZoom() { zoomModal.style.display = 'none'; }
+        function downloadImage(url) {
+            const link = document.createElement('a'); link.href = url; link.download = `photobooth-${Date.now()}.png`; link.click();
+        }
+
+        function archiveAndRestart() {
+            const img = document.getElementById('current-img');
+            if (img) {
+                const historyItem = document.createElement('div');
+                historyItem.className = "relative group rounded-xl overflow-hidden mb-4 border border-white/5 opacity-70 hover:opacity-100 transition-all flex justify-center bg-slate-900/30";
+                historyItem.innerHTML = `
+                    <img src="${img.src}" class="max-h-[300px] w-auto object-contain">
+                    <button onclick="openZoom('${img.src}')" class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </button>
+                `;
+                historyGallery.prepend(historyItem);
+            }
+            handleStartCapture();
+        }
+
+        function clearAll() { if(confirm("Xóa lịch sử?")) { historyGallery.innerHTML = ''; capturedFrames = []; renderComposite(); } }
+        window.onload = initCamera;
+    </script>
+</body>
+</html>
