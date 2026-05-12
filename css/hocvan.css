@@ -1,8 +1,3 @@
-/* FILE: css/hocvan.css
-   Chứa các styles dành riêng cho trang Học vấn (Timeline)
-*/
-
-/* Hiệu ứng đường kẻ dọc của Timeline */
 .timeline-line::before {
     content: '';
     position: absolute;

@@ -1,8 +1,3 @@
-/* FILE: css/chungchi.css
-   Chứa các styles dành riêng cho trang Chứng chỉ
-*/
-
-/* Hiệu ứng đổ bóng và viền cho card chứng chỉ */
 .cert-card {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -26,7 +21,7 @@
     transform: scale(1.08);
 }
 
-/* Hiệu ứng lớp phủ (overlay) */
+/* Hiệu ứng lớp phủ */
 .cert-overlay {
     background: linear-gradient(to top, rgba(59, 130, 246, 0.2), transparent);
     opacity: 0;
