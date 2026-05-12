@@ -7,8 +7,8 @@
 
 | Tính năng | Mô tả |
 | :--- | :--- |
-| **Photobooth** | Hỗ trợ chụp ảnh và tải xuống trực tiếp trên website. |
 |  **Portfolio** | Trưng bày các dự án, chứng chỉ và quá trình học vấn. |
+| **Photobooth** | Hỗ trợ chụp ảnh và tải xuống trực tiếp trên website. |
 |  **Contact Form** | Gửi phản hồi và thông tin liên hệ trực tiếp qua website. |
   
 ## 📂 Cấu trúc dự án / Project Structure
