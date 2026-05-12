@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học vấn - HuuHieu</title>    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: '#3b82f6' }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/hocvan.css">
+</head>
+
+<body class="bg-gray-900 text-gray-200 antialiased selection:bg-blue-900 selection:text-blue-100">
+
+    <header class="bg-gray-900/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="../image/avt-lônxon.jpg" alt="logo" class="w-10 h-10 rounded-full object-cover border-2 border-primary">
+                <span class="font-bold text-xl tracking-tight text-white">Huu<span class="text-primary">Hieu</span></span>
+            </div>
+
+            <nav class="hidden md:flex gap-6 font-medium text-gray-400">
+                <a href="index.html" class="hover:text-primary transition-colors">Trang chủ</a>
+                <a href="hocvan.html" class="hover:text-primary transition-colors text-white">Học vấn</a>
+                <a href="chungchi.html" class="hover:text-primary transition-colors">Chứng chỉ</a>
+                <a href="duan.html" class="hover:text-primary transition-colors">Dự án</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-primary text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <nav id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700 flex-col py-2 px-4 shadow-xl absolute w-full left-0">
+            <a href="index.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Trang chủ</a>
+            <a href="hocvan.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Học vấn</a>
+            <a href="chungchi.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Chứng chỉ</a>
+            <a href="duan.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Dự án</a>
+        </nav>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12 md:py-20">
+        <div class="space-y-12 relative timeline-line">
+            
+            <!-- Đại học -->
+            <div class="timeline-item relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="timeline-dot flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-gray-900 text-primary shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="timeline-card w-[calc(100%-4rem)] md:w-[45%] bg-gray-800/40 p-6 rounded-xl border border-gray-700 shadow-xl transition-all">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                        <div class="font-bold text-white text-xl">Đại học Bách Khoa Đà Nẵng</div>
+                        <time class="text-xs font-semibold uppercase text-primary sm:mt-0 mt-1">2024 – Nay</time>
+                    </div>
+                    <div class="text-blue-400 font-medium mb-2 text-sm md:text-base">Ngành: Điện tử - Viễn thông</div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        GPA tích lũy: <span class="text-white font-bold">3.2/4.0</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- THPT -->
+            <div class="timeline-item relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="timeline-dot flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-gray-900 text-gray-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                    <i class="fa-solid fa-school"></i>
+                </div>
+                <div class="timeline-card w-[calc(100%-4rem)] md:w-[45%] bg-gray-800/40 p-6 rounded-xl border border-gray-700 shadow-xl transition-all">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                        <div class="font-bold text-white text-xl">THPT Đô Lương IV</div>
+                        <time class="text-xs font-semibold uppercase text-gray-500 sm:mt-0 mt-1">2021 - 2024</time>
+                    </div>
+                    <div class="text-gray-300 font-medium mb-2 text-sm">Khối Khoa học Tự nhiên</div>
+                    <p class="text-gray-400 text-sm">Tốt nghiệp loại: <span class="text-white font-bold">Giỏi</span></p>
+                </div>
+            </div>
+
+            <!-- THCS -->
+            <div class="timeline-item relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                <div class="timeline-dot flex items-center justify-center w-10 h-10 rounded-full border border-gray-700 bg-gray-900 text-gray-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                    <i class="fa-solid fa-book"></i>
+                </div>
+                <div class="timeline-card w-[calc(100%-4rem)] md:w-[45%] bg-gray-800/40 p-6 rounded-xl border border-gray-700 shadow-xl transition-all">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                        <div class="font-bold text-white text-xl">THCS Hiến Sơn</div>
+                        <time class="text-xs font-semibold uppercase text-gray-500 sm:mt-0 mt-1">2017 - 2021</time>
+                    </div>
+                    <p class="text-gray-400 text-sm">Tốt nghiệp loại: <span class="text-white font-bold">Giỏi</span></p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Floating Action Buttons (Fixed Bottom Right) - Đã cập nhật giống Index -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[100] items-end">
+        <!-- Nút Mua Hàng -->
+        <a href="https://collshp.com/huuhieu06" target="_blank" 
+           class="group flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-5 py-3 rounded-full font-medium shadow-xl hover:shadow-blue-500/40 transition-all hover:-translate-y-1">
+            <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">Mua hàng ủng hộ mình nhé =))</span>
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+        </a>
+        
+        <!-- Nút Góp Ý -->
+        <a href="mailto:huuhieu2611@gmail.com?subject=Góp%20ý%20cho%20website%20HuuHieu" 
+           class="group flex items-center gap-3 bg-gray-800 text-white px-5 py-3 rounded-full font-medium shadow-xl border border-gray-700 hover:bg-gray-700 transition-all hover:-translate-y-1">
+            <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">Góp ý cho Hiếu</span>
+            <i class="fa-solid fa-comment-dots text-lg text-primary"></i>
+        </a>
+    </div>
+
+    <!-- Footer - Đã cập nhật giống Index -->
+    <footer class="bg-black text-gray-500 py-8 text-center border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2026 Trần Hữu Hiếu. Sinh viên Đại học Bách Khoa Đà Nẵng.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                const icon = btn.querySelector('i');
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                    menu.classList.toggle('flex');
+                    if(menu.classList.contains('hidden')) {
+                        icon.classList.replace('fa-xmark', 'fa-bars');
+                    } else {
+                        icon.classList.replace('fa-bars', 'fa-xmark');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

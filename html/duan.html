@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự án - HuuHieu</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { primary: '#3b82f6' }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/duan.css">
+</head>
+
+<body class="bg-gray-900 text-gray-200 antialiased selection:bg-blue-900 selection:text-blue-100">
+
+    <!-- Header -->
+    <header class="bg-gray-900/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="../image/avt-lônxon.jpg" alt="logo" class="w-10 h-10 rounded-full object-cover border-2 border-primary">
+                <span class="font-bold text-xl tracking-tight text-white">Huu<span class="text-primary">Hieu</span></span>
+            </div>
+
+            <nav class="hidden md:flex gap-6 font-medium text-gray-400">
+                <a href="index.html" class="hover:text-primary transition-colors">Trang chủ</a>
+                <a href="hocvan.html" class="hover:text-primary transition-colors">Học vấn</a>
+                <a href="chungchi.html" class="hover:text-primary transition-colors">Chứng chỉ</a>
+                <a href="duan.html" class="hover:text-primary transition-colors text-white">Dự án</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-primary text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <nav id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700 flex-col py-2 px-4 shadow-xl absolute w-full left-0">
+            <a href="index.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Trang chủ</a>
+            <a href="hocvan.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Học vấn</a>
+            <a href="chungchi.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Chứng chỉ</a>
+            <a href="duan.html" class="block py-3 text-gray-300 hover:text-primary font-medium border-b border-gray-700">Dự án</a>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Dự án 1 -->
+            <div class="project-card bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden group">
+                <div class="project-img-container">
+                    <img src="../image/homeweb.png" alt="Dự án cá nhân" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="status-badge px-2 py-1 bg-yellow-500/20 text-yellow-400 text-[10px] font-bold rounded uppercase border border-yellow-500/30">Đang phát triển</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Website Portfolio Cá Nhân</h3>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-2">Xây dựng trang web giới thiệu bản thân bằng HTML, CSS và JavaScript.</p>
+                    
+                    <div class="mt-auto">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">HTML5</span>
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">CSS</span>
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">Javascript</span>
+                        </div>
+                        <div class="flex items-center justify-between"> 
+                            <a href="index.html" class="view-detail-link text-primary text-sm font-medium flex items-center gap-1 hover:underline">
+                                Xem chi tiết <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                            <div class="flex gap-3 text-gray-400">
+                                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dự án 2 -->
+            <div class="project-card bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden group">
+                <div class="project-img-container">
+                    <img src="../image/photobooth.png" alt="Dự án App" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="status-badge px-2 py-1 bg-yellow-500/20 text-yellow-400 text-[10px] font-bold rounded uppercase border border-yellow-500/30">Đang phát triển</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Photobooths Web</h3>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-2">Trang web photobooth được làm bằng cách vận dụng các Tools AI để phát triển.</p>
+                    
+                    <div class="mt-auto">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">React</span>
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">Python</span>
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">AI Tools</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <a href="../html/photobooth.html" class="view-detail-link text-primary text-sm font-medium flex items-center gap-1 hover:underline">
+                                Xem chi tiết <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dự án 3 -->
+            <div class="project-card bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden group">
+                <div class="project-img-container">
+                    <img src="../image/shoppe.png" alt="Dự án App" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="status-badge px-2 py-1 bg-yellow-500/20 text-yellow-400 text-[10px] font-bold rounded uppercase border border-yellow-500/30">Đang phát triển</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Shopee Affiliate System</h3>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-2">Trang web affilate mình thiết lập mọi người mua hàng ủng hộ với nhé!</p>
+                    <div class="mt-auto">
+                         <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">Shoppe</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <a href="https://collshp.com/huuhieu06" target="_blank" class="view-detail-link text-primary text-sm font-medium flex items-center gap-1 hover:underline">
+                                Xem chi tiết <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dự án 4 -->
+            <div class="project-card bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden group">
+                <div class="project-img-container">
+                    <img src="../image/pbl1.png" alt="Dự án App" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <span class="status-badge px-2 py-1 bg-green-500/20 text-green-400 text-[10px] font-bold rounded uppercase border border-green-500/30">Hoàn thành</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Quản Lý Cửa Hàng</h3>
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-2">Đồ án PBL1: Ứng dụng quản lý kho hàng và đơn hàng bằng C++.</p>
+                    <div class="mt-auto">
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">C++</span>
+                            <span class="tech-tag px-2 py-1 bg-gray-700 text-gray-300 text-[10px] rounded">OOP</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <a href="../html/error.html" target="_blank" class="view-detail-link text-primary text-sm font-medium flex items-center gap-1 hover:underline">
+                                Xem chi tiết <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút Tạo mới dự án -->
+            <div class="bg-blue-900/10 border-2 border-dashed border-blue-900/50 rounded-2xl flex flex-col items-center justify-center p-8 text-center min-h-[300px] hover:bg-blue-900/20 transition-all cursor-help">
+                <div class="w-16 h-16 bg-blue-900/20 rounded-full flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-rocket text-2xl text-primary"></i>
+                </div>
+                <h3 class="text-white font-bold mb-2">Dự án tiếp theo...</h3>
+                <p class="text-gray-500 text-sm italic">"Luôn luôn tìm hiểu và phát triển."</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Floating Action Buttons (Fixed Bottom Right) -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[100] items-end">
+        <!-- Nút Mua Hàng -->
+        <a href="https://collshp.com/huuhieu06" target="_blank" 
+           class="group flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-5 py-3 rounded-full font-medium shadow-xl hover:shadow-blue-500/40 transition-all hover:-translate-y-1">
+            <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">Mua hàng ủng hộ mình nhé =))</span>
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+        </a>
+        
+        <!-- Nút Góp Ý -->
+        <a href="mailto:huuhieu2611@gmail.com?subject=Góp%20ý%20cho%20website%20HuuHieu" 
+           class="group flex items-center gap-3 bg-gray-800 text-white px-5 py-3 rounded-full font-medium shadow-xl border border-gray-700 hover:bg-gray-700 transition-all hover:-translate-y-1">
+            <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">Góp ý cho Hiếu</span>
+            <i class="fa-solid fa-comment-dots text-lg text-primary"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-500 py-8 text-center border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2026 Trần Hữu Hiếu. Sinh viên Đại học Bách Khoa Đà Nẵng.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                const icon = btn.querySelector('i');
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                    menu.classList.toggle('flex');
+                    if(menu.classList.contains('hidden')) {
+                        icon.classList.replace('fa-xmark', 'fa-bars');
+                    } else {
+                        icon.classList.replace('fa-bars', 'fa-xmark');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

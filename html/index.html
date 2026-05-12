@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - HuuHieu</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- Kết nối file CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-900 text-gray-200 antialiased selection:bg-blue-900 selection:text-blue-100">
+
+    <header class="bg-gray-900/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="../image/avt-lônxon.jpg" alt="logo" class="w-10 h-10 rounded-full object-cover border-2 border-primary">
+                <span class="font-bold text-xl tracking-tight text-white">Huu<span class="text-primary">Hieu</span></span>
+            </div>
+
+            <nav class="hidden md:flex gap-6 font-medium text-gray-400">
+                <a href="index.html" class="hover:text-primary transition-colors text-white">Trang chủ</a>
+                <a href="hocvan.html" class="hover:text-primary transition-colors">Học vấn</a>
+                <a href="chungchi.html" class="hover:text-primary transition-colors">Chứng chỉ</a>
+                <a href="duan.html" class="hover:text-primary transition-colors">Dự án</a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-primary text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <nav id="mobile-menu" class="hidden bg-gray-800 border-t border-gray-700 flex-col py-2 px-4 shadow-xl absolute w-full left-0">
+            <a href="index.html" class="block py-3 text-gray-300 hover:text-primary border-b border-gray-700">Trang chủ</a>
+            <a href="hocvan.html" class="block py-3 text-gray-300 hover:text-primary border-b border-gray-700">Học vấn</a>
+            <a href="chungchi.html" class="block py-3 text-gray-300 hover:text-primary border-b border-gray-700">Chứng chỉ</a>
+            <a href="duan.html" class="block py-3 text-gray-300 hover:text-primary border-b border-gray-700">Dự án</a>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 md:py-20">
+        <section class="flex flex-col-reverse md:flex-row items-center justify-between gap-12 mb-20">
+            <div class="text md:w-3/5 space-y-6">
+                <p class="text-primary font-semibold tracking-wide uppercase text-sm">Xin chào, mình là</p>
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight tracking-tighter">
+                    Trần <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">Hữu Hiếu</span>
+                </h1>
+                
+                <div class="bg-blue-900/20 border-l-4 border-primary p-4 rounded-r-lg inline-block">
+                    <p class="text-blue-100 font-medium text-base">🎓 Sinh viên năm 2 Trường Đại học Bách Khoa - Đại học Đà Nẵng.</p>
+                </div>
+
+                <!-- Đã chỉnh sửa từ text-lg xuống text-base -->
+                <div class="space-y-4 text-gray-400 leading-relaxed text-base">
+                    <p> 👀 Mình đam mê lập trình, phát triển web và khám phá các mạch điện tử. </p>
+                    <p>🌱 Hiện tại mình đang học C++, Python, HTML, CSS và Javascript. </p>
+                    <p>🔧 Công cụ sử dụng: Git, VS Code, Proteus, LTSpice.</p>
+                    <p>⚡ Mình thích biến ý tưởng thành công cụ hữu ích — từ những đoạn mã đơn giản đến các dự án hoàn chỉnh!</p>
+                </div>
+            </div>
+
+            <div class="avatar md:w-2/5 flex justify-center">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full blur-2xl opacity-20 animate-pulse"></div>
+                    <img src="../image/avt-lônxon.jpg" alt="Avatar Hữu Hiếu" class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-gray-800 shadow-2xl z-10">
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-gray-800 my-16">
+
+        <section class="gallery-container">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-white inline-block relative">
+                    Góc Kỷ Niệm
+                    <span class="absolute -bottom-2 left-1/4 right-1/4 h-1 bg-primary rounded-full"></span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gallery-item shadow-lg shadow-black/40">
+                    <img src="../image/ky-yeu-2024.jpg" alt="Kỷ yếu 2024">
+                    <div class="gallery-caption"><h3 class="font-bold">Kỷ yếu 2024</h3></div>
+                </div>
+                <div class="gallery-item shadow-lg shadow-black/40">
+                    <img src="../image/tet-2025.jpg" alt="Tết 2025">
+                    <div class="gallery-caption"><h3 class="font-bold">Tết 2025</h3></div>
+                </div>
+                <div class="gallery-item shadow-lg shadow-black/40">
+                    <img src="../image/wedding-trungtrang.jpg" alt="Wedding A Trung">
+                    <div class="gallery-caption"><h3 class="font-bold">Wedding A Trung</h3></div>
+                </div>
+                <div class="gallery-item shadow-lg shadow-black/40">
+                    <img src="../image/wedding-trungthu.jpg" alt="Wedding C Thu">
+                    <div class="gallery-caption"><h3 class="font-bold">Wedding C Thu</h3></div>
+                </div>
+                <div class="gallery-item shadow-lg shadow-black/40 lg:col-span-2">
+                    <img src="../image/deo-hai-van.jpg" alt="Đèo Hải Vân">
+                    <div class="gallery-caption"><h3 class="font-bold">Đèo Hải Vân</h3></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Action Buttons (Fixed Bottom Right) -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-3 z-[100] items-end">
+        <!-- Nút Mua Hàng -->
+        <a href="https://collshp.com/huuhieu06" target="_blank" 
+           class="group flex items-center gap-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white px-5 py-3 rounded-full font-medium shadow-xl hover:shadow-blue-500/40 transition-all hover:-translate-y-1">
+            <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">Mua hàng ủng hộ mình nhé =))</span>
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+        </a>
+        
+        <!-- Nút Góp Ý -->
+        <a href="mailto:contact@example.com" 
+           class="group flex items-center gap-3 bg-gray-800 text-white px-5 py-3 rounded-full font-medium shadow-xl border border-gray-700 hover:bg-gray-700 transition-all hover:-translate-y-1">
+            <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-500 ease-in-out opacity-0 group-hover:opacity-100">Góp ý cho Hiếu</span>
+            <i class="fa-solid fa-comment-dots text-lg text-primary"></i>
+        </a>
+    </div>
+
+    <footer class="bg-black text-gray-500 py-8 text-center border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <p>&copy; 2026 Trần Hữu Hiếu. Sinh viên Đại học Bách Khoa Đà Nẵng.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                const icon = btn.querySelector('i');
+                btn.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                    if(menu.classList.contains('hidden')) {
+                        icon.classList.replace('fa-xmark', 'fa-bars');
+                    } else {
+                        icon.classList.replace('fa-bars', 'fa-xmark');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
