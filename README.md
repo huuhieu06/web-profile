@@ -1,5 +1,15 @@
 ## 🏷 Personal Website Project
+- Giới thiệu:
+  Personal Web Profile được xây dựng với mục tiêu là nơi lưu trữ thông tin và trưng bày các dự án kỹ thuật, kỹ năng lập trình.
 - Link website: https://huuhieu06.github.io/web-profile
+
+ ## ✨ Tính năng chính / Key Features
+
+| Tính năng | Mô tả |
+| :--- | :--- |
+| **Photobooth** | Hỗ trợ chụp ảnh và tải xuống trực tiếp trên website. |
+|  **Portfolio** | Trưng bày các dự án, chứng chỉ và quá trình học vấn. |
+|  **Contact Form** | Gửi phản hồi và thông tin liên hệ trực tiếp qua website. |
   
 ## 📂 Cấu trúc dự án / Project Structure
 
